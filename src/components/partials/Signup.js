@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState } from 'react';
 
 
@@ -8,7 +9,14 @@ const Signup = (props) => {
   // TODO: add form password validation
   const handleSubmit = e => {
     e.preventDefault();
+    axios.get(process.env.REACT_APP_SERVER_URL)
+      .then(response =>{
+        console.log(response.data);
+      })
+
+    // axios.post('http://local')
     console.log(`Sending up the new user data`, {name, email, password})
+    
   }
   return(
     <section>
