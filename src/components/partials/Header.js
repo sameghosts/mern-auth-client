@@ -6,14 +6,24 @@ const Header = (props) => {
     margin: 0,
     padding: '1em 0'
   }
+
+  let conditionalLinks = props.currentUser ?
+    <nav>
+      <Link to="/">Home</Link>{'  |  '}
+      <Link to="/profile">Profile</Link>
+      <span>Logout</span>
+      {/* TODO Logout link styling and functionality */}
+    </nav> :
+    <nav>
+      <Link to="/">Home</Link>{'  |  '}
+      <Link to="/auth">Login or Signup</Link>
+    </nav> 
+
+    
   return(
     <header style={style}>
       <h1>This is a website!</h1>
-      <nav>
-        <Link to="/">Home</Link>{'  |  '}
-        <Link to="/auth">Auth</Link>{'  |  '}
-        <Link to="/profile">Profile</Link>
-      </nav>
+      {conditionalLinks}
     </header>
     
   );
