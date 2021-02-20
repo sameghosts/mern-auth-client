@@ -11,13 +11,21 @@ function App() {
   
   const handleAuth = user => {
     console.log('Handling Authentication....')
-    setCurrentUser(user);
-    setIsAuthenticated(true);
+    if (user){
+      // sick add user stuff
+      setCurrentUser(user);
+      setIsAuthenticated(true);
+    } else {
+      // clear it all out
+      setCurrentUser(null);
+      setIsAuthenticated(false);
+      localStorage.removeItem('jwtToken');
+    }
   }
   return (
     <div className="App">
       {/* TODO: remove this div and style more intentionally */}
-      <Header currentUser={currentUser} />
+      <Header currentUser={currentUser} handleAuth={handleAuth} />
       <Content 
       currentUser={currentUser}
       isAuthenticated={isAuthenticated}
